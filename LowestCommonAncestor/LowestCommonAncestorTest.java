@@ -55,6 +55,24 @@ class LowestCommonAncestorTest {
 		
 	}
 	
+	@Test
+	public void getTest() {
+		
+		TreeNode<Integer,Integer> tree = new TreeNode<Integer,Integer>();
+		//empty treenode
+		assertNull(tree.get(10));
+		tree.insert(10, 10);
+		tree.insert(5, 5);
+		tree.insert(20, 20);
+		tree.insert(15, 15);
+		tree.insert(2, 2);
+		//test for leaf in treenode
+		assertEquals(5,(int)tree.get(5));
+		//test for leaf not in treenode
+		assertNull(tree.get(7));
+		
+		
+	}
 	
 	
 
