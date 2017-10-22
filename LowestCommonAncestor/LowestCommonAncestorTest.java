@@ -39,6 +39,7 @@ class LowestCommonAncestorTest {
 		tree.insert(2,2);
 		tree.insert(6,6);
 		tree.insert(12, 12);
+		
 		//delete a leaf from the tree
 		tree.delete(20);
 		assertEquals("((((()2())5(()6()))8(()9()))10((()12())15()))",tree.printTree());
@@ -51,6 +52,27 @@ class LowestCommonAncestorTest {
 		//delete leaf with a right node
 		tree.delete(6);
 		assertEquals("((((()2())5())8(()9()))10(()12()))",tree.printTree());
+		tree.insert(3,3);
+		tree.delete(3);
+		assertEquals("((((()2())5())8(()9()))10(()12()))", tree.printTree());
+		tree.insert(3, null);
+		tree.delete(3);
+		assertEquals("((((()2())5())8(()9()))10(()12()))", tree.printTree());
+		tree.delete(2);
+		tree.insert(2, null);
+		tree.insert(3, null);
+		tree.delete(5);
+		tree.insert(null, null);
+		assertEquals("((()8(()9()))10(()12()))", tree.printTree());
+		//delete node that has a duplicate
+		tree.insert(4, 4);
+		tree.insert(4, 4);
+		tree.insert(5, 5);
+		tree.insert(3, 3);
+		tree.delete(4);
+		assertEquals("(((()3(()5()))8(()9()))10(()12()))", tree.printTree());
+		
+		
 		
 		
 	}
