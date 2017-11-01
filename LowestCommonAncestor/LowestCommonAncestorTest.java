@@ -132,6 +132,22 @@ class LowestCommonAncestorTest {
 		
 	}
 	
+	@Test
+	public void DAG_LCA_test(){
+		
+		TreeNode<Integer,Integer> tree = new TreeNode<Integer,Integer>();
+		//test on an empty treenode
+		assertNull(tree.lowestCommonAncestor(20, 10));
+		
+		tree.insert(20, 20);
+		//test correct nodes on single tree
+		assertEquals(10,(int)tree.lowestCommonAncestor(10, 10));
+		//test no correct nodes on single node tree
+		assertNull(tree.lowestCommonAncestor(15, 20));
+		//test 1 correct node on single node tree
+		assertNull(tree.lowestCommonAncestor(10, 15));
+		
+	}
 	
 
 
