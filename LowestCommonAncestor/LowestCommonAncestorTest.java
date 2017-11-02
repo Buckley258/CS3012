@@ -132,6 +132,8 @@ class LowestCommonAncestorTest {
 		
 	}
 	
+  
+ DAG
 	@Test
 	public void DAG_LCA_test(){
 		
@@ -166,6 +168,7 @@ class LowestCommonAncestorTest {
 		assertEquals(20, (int)treeGraph.lowestCommonAncestor(20, 19));
 		
 	}
+
 	
 
 
