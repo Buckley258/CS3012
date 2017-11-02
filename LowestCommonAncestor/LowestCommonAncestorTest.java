@@ -132,6 +132,43 @@ class LowestCommonAncestorTest {
 		
 	}
 	
+  
+ DAG
+	@Test
+	public void DAG_LCA_test(){
+		
+		TreeNode<Integer,Integer> treeGraph = new TreeNode<Integer,Integer>();
+		//test on an empty treenode
+		assertNull(treeGraph.lowestCommonAncestor(20, 10));
+		
+		treeGraph.insert(20, 20);
+		//test correct nodes on single tree/graph
+		assertEquals(20,(int)treeGraph.lowestCommonAncestor(20, 20));
+		//test no correct nodes on single node tree/graph
+		assertNull(treeGraph.lowestCommonAncestor(15, 25));
+		//test 1 correct node on single node tree/graph
+		assertNull(treeGraph.lowestCommonAncestor(20, 15));
+		
+		treeGraph.insert(16, 16);
+		treeGraph.insert(17, 17);
+		treeGraph.insert(19, 19);
+		treeGraph.insert(13, 13);
+		treeGraph.insert(15, 15);
+		treeGraph.insert(11, 11);
+		treeGraph.insert(25, 25);
+		treeGraph.insert(30, 30);
+		
+		//multiple tests on normal many node treeGraph
+		assertEquals(16, (int)treeGraph.lowestCommonAncestor(11, 19));
+		assertEquals(3, (int)treeGraph.lowestCommonAncestor(11, 15));
+		assertEquals(20, (int)treeGraph.lowestCommonAncestor(30, 19));
+		assertEquals(20, (int)treeGraph.lowestCommonAncestor(15, 30));
+		assertEquals(20, (int)treeGraph.lowestCommonAncestor(16, 15));
+		//if one of the nodes is the root, return root
+		assertEquals(20, (int)treeGraph.lowestCommonAncestor(20, 19));
+		
+	}
+
 	
 
 
