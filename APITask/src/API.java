@@ -6,7 +6,12 @@ import java.util.Arrays;
 
 import javax.swing.JFrame;
 
-// collect information on my software engineering project in second year
+/* collect information on my software engineering project in second year
+ * about its downloads.
+ * then display the amount of downloads each user did as a percentage of total downloads
+ * in the form of a pie chart
+ */
+
 public class API {
 	public static void main(String[] args) throws Exception {
 		
@@ -23,7 +28,6 @@ public class API {
 			//System.out.println(line);
 		}
 		in.close();
-		int i =0;
 		
 		
 		//Get GitHub Downloads of KinectMultiplayerGame
@@ -37,7 +41,7 @@ public class API {
 		double total = (double)sum;
 		
 		// create pie chart
-		CreateChart pieChart = new CreateChart("Pie Chart Test", "Percentage of User Downloads From Total", dArray, total);
+		CreateChart pieChart = new CreateChart("Social Pie Chart", "User Percentage Of Downloads From Total Downloads", dArray, total);
 		pieChart.pack();
 		pieChart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pieChart.setVisible(true);
