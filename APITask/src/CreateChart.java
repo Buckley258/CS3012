@@ -10,23 +10,26 @@ import org.jfree.util.Rotation;
 
 public class CreateChart extends JFrame
 {
-	public CreateChart(String appTitle, String chartTitle) {
+	
+	public CreateChart(String appTitle, String chartTitle, double[] downloads, double total) {
 		
-		PieDataset dataset = createDataset();
+		PieDataset dataset = createDataset(downloads, total);
 		JFreeChart chart = createChart(dataset, chartTitle);
 		ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.setPreferredSize(new java.awt.Dimension(500, 300));
 		setContentPane(chartPanel);
 		
-		
 	}
-	
-	private PieDataset createDataset() {
+
+	private PieDataset createDataset(double[] downloads, double total) {
 		
 		DefaultPieDataset result = new DefaultPieDataset();
-		result.setValue("User 1", 65);
-		result.setValue("User 2", 15);
-		result.setValue("User 3", 20);
+		double user1Percentage = (downloads[0]/total)*100;
+		double user2Percentage = (downloads[1]/total)*100;
+		double user3Percentage = (downloads[2]/total)*100;
+		result.setValue("User 1",user1Percentage);
+		result.setValue("User 2", user2Percentage);
+		result.setValue("User 3", user3Percentage);
 		return result;
 		
 	}

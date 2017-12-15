@@ -24,24 +24,20 @@ public class API {
 		}
 		in.close();
 		int i =0;
-		//int[] dArray = new int[5];
+		
 		
 		//Get GitHub Downloads of KinectMultiplayerGame
 		Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).map(l -> l.split(",")[0]).forEach(l -> System.out.println(l));
 		
 		//Sum up all download counts
-		int total = Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).mapToInt(l -> Integer.parseInt(l.split(",")[0])).sum();
-		System.out.println("\nTotal Downloads: " + total);
+		int sum = Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).mapToInt(l -> Integer.parseInt(l.split(",")[0])).sum();
+		System.out.println("\nTotal Downloads: " + sum);
 		
 		double []dArray = Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).mapToDouble(l ->Double.parseDouble( l.split(",")[0])).toArray();
+		double total = (double)sum;
 		
-		for(i=0; i<dArray.length; i++) {
-			
-			System.out.println(dArray[i] + " test" + '\n');
-			
-		}
-		
-		CreateChart pieChart = new CreateChart("Pie Chart Test", "User Downloads");
+		// create pie chart
+		CreateChart pieChart = new CreateChart("Pie Chart Test", "Percentage of User Downloads From Total", dArray, total);
 		pieChart.pack();
 		pieChart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pieChart.setVisible(true);
