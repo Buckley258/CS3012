@@ -24,12 +24,14 @@ public class CreateChart extends JFrame
 	private PieDataset createDataset(double[] downloads, double total) {
 		
 		DefaultPieDataset result = new DefaultPieDataset();
-		double user1Percentage = (downloads[0]/total)*100;
-		double user2Percentage = (downloads[1]/total)*100;
-		double user3Percentage = (downloads[2]/total)*100;
-		result.setValue("User 1" + " (" + downloads[0] + ")",user1Percentage);
-		result.setValue("User 2" + " (" + downloads[1] + ")", user2Percentage);
-		result.setValue("User 3" + " (" + downloads[2] + ")", user3Percentage);
+		double userPercentage;
+		
+		for(int i = 0; i<downloads.length; i++) 
+		{
+			userPercentage = (downloads[i]/total)*100;
+			result.setValue("User " + (i+1) + " (" + (int)downloads[i] + ")",userPercentage);
+		}
+		
 		return result;
 		
 	}
