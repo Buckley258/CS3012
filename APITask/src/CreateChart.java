@@ -24,12 +24,12 @@ public class CreateChart extends JFrame
 	private PieDataset createDataset(double[] downloads, double total) {
 		
 		DefaultPieDataset result = new DefaultPieDataset();
-		double versionPercentage;
+		double releasePercentage;
 		
 		for(int i = 0; i<downloads.length; i++) 
 		{
-			versionPercentage = (downloads[i]/total)*100;
-			result.setValue("Version " + (i+1) + " (" + (int)downloads[i] + ")",versionPercentage);
+			releasePercentage = (downloads[i]/total)*100;
+			result.setValue("Release " + (i+1) + " (" + (int)downloads[i] + ")", releasePercentage);
 		}
 		
 		return result;
