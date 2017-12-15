@@ -24,12 +24,12 @@ public class CreateChart extends JFrame
 	private PieDataset createDataset(double[] downloads, double total) {
 		
 		DefaultPieDataset result = new DefaultPieDataset();
-		double userPercentage;
+		double versionPercentage;
 		
 		for(int i = 0; i<downloads.length; i++) 
 		{
-			userPercentage = (downloads[i]/total)*100;
-			result.setValue("User " + (i+1) + " (" + (int)downloads[i] + ")",userPercentage);
+			versionPercentage = (downloads[i]/total)*100;
+			result.setValue("Version " + (i+1) + " (" + (int)downloads[i] + ")",versionPercentage);
 		}
 		
 		return result;
@@ -40,7 +40,7 @@ public class CreateChart extends JFrame
 		
 		JFreeChart chart = ChartFactory.createPieChart3D(title, dataset, true, true, false);
 		PiePlot3D plot = (PiePlot3D) chart.getPlot();
-		plot.setStartAngle(0);
+		plot.setStartAngle(210);
 		plot.setDirection(Rotation.CLOCKWISE);
 		plot.setForegroundAlpha(0.5f);
 		return chart;
