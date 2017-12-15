@@ -21,13 +21,25 @@ public class API {
 			//System.out.println(line);
 		}
 		in.close();
+		int i =0;
+		//int[] dArray = new int[5];
 		
-		//Get Git Hub Downloads of KinectMultiplayerGame
+		//Get GitHub Downloads of KinectMultiplayerGame
 		Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).map(l -> l.split(",")[0]).forEach(l -> System.out.println(l));
 		
 		//Sum up all download counts
 		int total = Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).mapToInt(l -> Integer.parseInt(l.split(",")[0])).sum();
 		System.out.println("\nTotal Downloads: " + total);
+		
+		int []dArray = Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).mapToInt(l ->Integer.parseInt( l.split(",")[0])).toArray();
+		
+		for(i=0; i<=dArray.length; i++) {
+			
+			System.out.println(dArray[i] + " test" + '\n');
+			
+		}
+		
+		
 		
 	}
 	
