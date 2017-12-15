@@ -4,6 +4,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
 
+import javax.swing.JFrame;
+
 // collect information on my software engineering project in second year
 public class API {
 	public static void main(String[] args) throws Exception {
@@ -31,14 +33,18 @@ public class API {
 		int total = Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).mapToInt(l -> Integer.parseInt(l.split(",")[0])).sum();
 		System.out.println("\nTotal Downloads: " + total);
 		
-		int []dArray = Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).mapToInt(l ->Integer.parseInt( l.split(",")[0])).toArray();
+		double []dArray = Arrays.stream(responseSB.toString().split("\"download_count\":")).skip(1).mapToDouble(l ->Double.parseDouble( l.split(",")[0])).toArray();
 		
-		for(i=0; i<=dArray.length; i++) {
+		for(i=0; i<dArray.length; i++) {
 			
 			System.out.println(dArray[i] + " test" + '\n');
 			
 		}
 		
+		CreateChart pieChart = new CreateChart("Pie Chart Test", "User Downloads");
+		pieChart.pack();
+		pieChart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pieChart.setVisible(true);
 		
 		
 	}
